@@ -36,10 +36,8 @@ double fourier_pair::transform(int k){
     int j = N/2;
     for(int i = 0; i<N/2;++i){
         if(i%2 !=0){
-        	cout << i ;
         	while(j<N){
         		if(j%2 !=1){ 
-        		   cout << j << endl;
         		   complex<double> temp = data[i];
                    data[i] = data[j];
                    data[j] = temp;
@@ -51,9 +49,23 @@ double fourier_pair::transform(int k){
             
         }
     }
-     
+    return combine(0,N-1,W);
+
    
     //Combine the elements
+}
+
+double fourier_pair::combine(int l , int r, double W){
+	//sleep(1);
+     if(r-l < 2) {
+        // cout <<" index " << l << "+ index "<< r<<endl;
+         return real(data[l]) + W*real(data[r]);
+     }  else {
+     	//cout << " --- recurr ---" << endl;
+     	cout << l << " , " << (r+l)/2  << endl;
+     	cout << (r+l)/2+1 << " , " << r << endl;
+     	return combine(l,(r+l)/2,W) + W*combine((r+l)/2+1,r,W);
+     }   
 }
 
 

@@ -18,6 +18,8 @@ class fourier_pair{
   public:
   	void intialize_fp(int N,double h, fn_db init_fn,int isig);
   	double transform(int k);
+  	double combine(int l , int r, double W);
+
   	friend ostream& operator<<(ostream& out,fourier_pair& m);  
 
 
