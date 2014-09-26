@@ -11,14 +11,14 @@ using namespace std;
 #include "FFT.h"
 
 double func(double x){
-	return sin(2.0*PI*x);
+	return 5.0 + 2*cos((PI*2.0)*x - PI/2.0) + 3*cos(4*PI*x);
 }
 
 int main(){
     fourier_pair fp{}; 
-    fp.intialize_fp(8, 0.1, func,1);
+    fp.intialize_fp(4, 1.0/4.0, func,1);
     cout << fp << endl;
-    fp.transform(8);
+    cout << fp.transform(2)<< endl;
     cout << fp <<endl;
     
     return 0;

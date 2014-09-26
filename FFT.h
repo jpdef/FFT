@@ -15,10 +15,12 @@ class fourier_pair{
   	complex<double>* data;
   	complex<double>* inv_data;
   	fn_db init_fn;
+    void bit_rev();
+  	double combine(int l , int r, int k);
+
   public:
   	void intialize_fp(int N,double h, fn_db init_fn,int isig);
   	double transform(int k);
-  	double combine(int l , int r, double W);
 
   	friend ostream& operator<<(ostream& out,fourier_pair& m);  
 
